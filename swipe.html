@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div id="car_image">
+  <img src="car1.jpg">
+</div>
+<div id="car1_discription" hidden>
+<p> Description must be fetched by backend </p>
+<button type="button" onclick="call_the_dealer()">Call the Dealer</button>
+</div>
+<div id="car2_discription" hidden>
+<p> Description must be fetched by backend </p>
+<button type="button" onclick="call_the_dealer()">Call the Dealer</button>
+</div>
+<div id="car3_discription" hidden>
+<p> Description must be fetched by backend </p>
+<button type="button" onclick="call_the_dealer()">Call the Dealer</button>
+</div>
+<div id="car4_discription" hidden>
+<p> Description must be fetched by backend </p>
+<button type="button" onclick="call_the_dealer()">Call the Dealer</button>
+</div>
+<div id="car5_discription" hidden>
+<p> Description must be fetched by backend </p>
+<button type="button" onclick="call_the_dealer()">Call the Dealer</button>
+</div>
+
+<script>
+function call_the_dealer()
+{
+//action
+}
+
+var touchstartX = 0;
+var touchstartY = 0;
+var touchendX = 0;
+var touchendY = 0;
+var car_number = 1;
+
+var car_image = document.getElementById('car_image');
+
+car_image.addEventListener('touchstart', function(event) {
+    touchstartX = event.screenX;
+}, false);
+
+car_image.addEventListener('touchmove', function(event) {
+    touchendX = event.screenX;
+    handleCars();
+}, false); 
+
+function handleCars() {
+    var swiped = 'swiped: ';
+    if (touchendX < touchstartX) {
+	++car_number;
+	if(car_number>5)
+	{
+	alert("we have not more image");
+	}
+     document.getElementById('car_image').children[0].src='car'+car_number+'.jpg'; 
+    }
+    if (touchendX > touchstartX) {
+       document.getElementById('car_image').style.visibility = "hidden";
+	   document.getElementById('car'+car_number+'_discription').style.visibility = "visible";
+    }
+    
+}
+
+
+</script>
+</body>
+</html>
